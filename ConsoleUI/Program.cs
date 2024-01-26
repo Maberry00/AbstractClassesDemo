@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 
 namespace ConsoleUI
 {
@@ -33,19 +35,66 @@ namespace ConsoleUI
             */
 
             // Create a list of Vehicle called vehicles
+            var vehicles = new List<Vehicle>();
 
             /*
              * Create 4 instances: 1 Car, 1 Motorcycle, and then 2 instances of type Vehicle (use explicit typing) but use constuctors from derived classes
              * 
              * Set the properties values with object initializer syntax
              */
+            Car car1 = new Car()
+            {
+                HasTrunk = true,
+                Year = "2020",
+                Make = "Dogdge",
+                Model = "Demon"
+            };
+            Motorcycle motorcycle1 = new Motorcycle() 
+            { 
+                HasSideCart = true,
+                 Year = "2017",
+                Make = "Kawasaki",
+                Model = "Ninja"
+            };
+            Vehicle vehicle1 = new Car()
+            {
+                Make = "Ford",
+                Year = "2022",      
+                Model = "Bronco"
+            };
+            Vehicle vehicle2 = new Motorcycle() 
+            {
+                Make = "Suzuki",
+                Year = "2002",
+                Model = "GSXR"
+            };
+
 
             /*
              * Add the 4 vehicles to the list
              * Using a foreach loop iterate through the list and display each of the properties
              */
 
+            vehicles.Add(car1);
+            vehicles.Add(motorcycle1);
+            vehicles.Add(vehicle1);
+            vehicles.Add(vehicle2);
+
+            foreach (var vehicle in vehicles) 
+            {
+                Console.WriteLine($"Year: {vehicle.Year}");
+                Console.WriteLine($"Make: {vehicle.Make}");
+                Console.WriteLine($"Model: {vehicle.Model}");
+                Console.WriteLine();
+                vehicle.DriveVirtual();
+                vehicle.DriveAbstract();
+                Console.WriteLine();
+
+            }
+
             // Call each of the drive methods for one car and one motorcycle
+
+            
 
             #endregion            
             Console.ReadLine();
